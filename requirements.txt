@@ -1,0 +1,6 @@
+Flask
+requests
+PyJWT
+tempmail-lol
+fastapi
+uvicorn
