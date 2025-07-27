@@ -30,11 +30,15 @@ jobs:
           unzip ngrok.zip
           sudo mv ngrok /usr/local/bin
 
-      - name: Run FastAPI and Ngrok
+      - name: Authenticate Ngrok (Direct Token)
+        run: |
+          ngrok authtoken "2zpayCMV7b9RZHMPaqdIWgKsoca_5JrYNfGXCfTGojfzXY3Hg"  # Replace with your actual authtoken
+
+      - name: Run FastAPI with Uvicorn
         run: |
           nohup uvicorn app:app --host 0.0.0.0 --port 8000 &
           nohup ngrok http 8000 &
-          sleep 10  # Give Ngrok time to start
+          sleep 10  # Allow ngrok to start
 
       - name: Get Ngrok URL
         run: |
