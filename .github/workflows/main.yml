@@ -23,12 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Latest Ngrok
+      - name: Download and Install Latest Ngrok
         run: |
-          sudo apt-get install unzip
-          curl -sSL https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ngrok.zip
-          unzip ngrok.zip
-          sudo mv ngrok /usr/local/bin
+          curl -sSL https://ngrok.com/download | sudo tar xz -C /usr/local/bin
 
       - name: Authenticate Ngrok
         run: |
